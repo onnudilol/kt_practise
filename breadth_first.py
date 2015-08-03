@@ -18,15 +18,24 @@ class Node:
         self.distance = -1
         self.parent = None
         self.child = list()
+        self.count = 0
 
     def __repr__(self):
         return str('Node: {}'.format(self.name))
 
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.count < len(self.child):
+            i = self.child[self.count]
+            self.count += 1
+            return i
+        else:
+            raise StopIteration
+
     def prev_node(self):
         return self.parent
-
-    def next_node(self):
-        return self.child
 
 
 def bfs(graph, start):
