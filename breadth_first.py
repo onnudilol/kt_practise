@@ -17,7 +17,7 @@ class Node:
         self.discovered = 'undiscovered'
         self.distance = -1
         self.parent = None
-        self.child = None
+        self.child = list()
 
     def __repr__(self):
         return str('Node: {}'.format(self.name))
@@ -55,7 +55,7 @@ def bfs(graph, start):
 
         for adj in u.adjacent:
             if nodes[adj].discovered == 'undiscovered':
-                u.child = adj
+                u.child.append(adj)
                 nodes[adj].discovered = 'discovered'
                 nodes[adj].distance = u.distance + 1
                 nodes[adj].parent = u.name
