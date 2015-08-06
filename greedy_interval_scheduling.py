@@ -45,7 +45,9 @@ def interval_scheduling(schedule):
     sorted_schedule.append(requests.pop(0))
 
     for h in requests:
-        if earliest_end <= h.utc_start_time:
+        if h.utc_start_time < earliest_end:
+            requests.remove(h)
+        elif earliest_end <= h.utc_start_time:
             earliest_end = h.utc_end_time
             sorted_schedule.append(h)
             requests.remove(h)
