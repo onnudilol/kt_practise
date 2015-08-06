@@ -47,7 +47,7 @@ def stable_matching(proposer_pref, proposed_pref):
             if proposed_pref[potential_mate].index(alt_mate) < proposed_pref[potential_mate].index(freeman):
                 already_matched[freeman].append(potential_mate)
                 free_men.append(freeman)
-                pref += 1
+                pref = len(already_matched[freeman])
 
             else:
                 already_matched[freeman].append(potential_mate)
